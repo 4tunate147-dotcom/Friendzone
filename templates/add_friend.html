@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+{% block title %}Add Friend Page{% endblock %}
+{% block content %}
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 mx-auto mt-5">
+            <div class="card">
+                <div class="card-header">
+                    <h1>Add New Friend</h1>
+                </div>
+                {% include 'flash-message.html' %}
+                <div class="card-body">
+                    <form method="post" enctype="multipart/form-data" action="">
+                        
+                        
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Name</label>
+                            <input name="name" type="text" class="form-control {% if errors.name_err %}is-invalid{% endif %}" 
+                                id="name" value="{{ request.form.get('name', '') }}">
+                            {% if errors.name_err %}
+                                <div class="invalid-feedback">{{ errors.name_err }}</div>
+                            {% endif %}
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email address</label>
+                            <input name="email" type="email" class="form-control {% if errors.email_err %}is-invalid{% endif %}" 
+                                id="email" value="{{ request.form.get('email', '') }}">
+                            {% if errors.email_err %}
+                                <div class="invalid-feedback">{{ errors.email_err }}</div>
+                            {% endif %}
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="birthday" class="form-label">Birthday</label>
+                            <input name="birthday" type="date" class="form-control {% if errors.birthday_err %}is-invalid{% endif %}" 
+                                id="birthday" value="{{ request.form.get('birthday', '') }}">
+                            {% if errors.birthday_err %}
+                                <div class="invalid-feedback">{{ errors.birthday_err }}</div>
+                            {% endif %}
+                        </div>
+
+                        <div class="mb-3">
+                            <label class="form-label" for="upload">Upload pix</label>
+                            <input name="upload" type="file" class="form-control" id="upload">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Submit</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

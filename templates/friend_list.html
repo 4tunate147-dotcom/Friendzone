@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+{% block tittle %} Friend List Page{% endblock %}
+{% block content %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Friends List</title>
+
+</head>
+<body>
+<div class="container mt-5">
+
+    <div class="d-flex justify-content-between mb-4">
+
+        <h1>Friends List</h1>
+
+        <a href="{{ url_for('add_friend') }}"
+           class="btn btn-primary">
+            Add Friend
+        </a>
+
+    </div>
+
+    <div class="row">
+
+        {% for friend in friends %}
+
+        <div class="col-md-4 mb-4">
+
+            <div class="card shadow">
+
+                <!-- Profile Picture -->
+                <img
+                    src="{{ url_for('static', filename='uploads/' + friend.profile_pix) }}"
+                    class="card-img-top"
+                    height="300"
+                    style="object-fit: cover;"
+                >
+
+                <div class="card-body">
+
+                    <!-- Name -->
+                    <h3>{{ friend.name }}</h3>
+
+                    <!-- Email -->
+                    <p>
+                        <strong>Email:</strong>
+                        {{ friend.email }}
+                    </p>
+
+                    <!-- Birthday -->
+                    <p>
+                        <strong>Birthday:</strong>
+                        {{ friend.dob }}
+                    </p>
+
+                    <a
+                    href="{{ url_for('edit_friend', id=friend.id) }}"
+                    class="btn btn-warning">Edit</a>
+
+                <a
+                    href="{{ url_for('delete_friend', id=friend.id) }}"
+                    class="btn btn-danger">Delete</a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+</div>
+
+</body>
+</html>
+{% endblock %}
