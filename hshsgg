@@ -1,0 +1,18 @@
+git init
+git add .
+git commit -m "Initial commit"
+git remote add origin https://github.com/yourusername/yourprojectname.git
+git branch -M main
+git push -u origin main
+git status
+git push 
+ls 
+
+
+cd my project folder name
+git status 
+git add . or you can add the new single folder instead
+git commit -m "name of the new folder need to add"
+git push 
+ 
+
